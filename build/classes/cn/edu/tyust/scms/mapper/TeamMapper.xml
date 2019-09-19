@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.TeamMapper"> <!-- namespace指定为Mapper接口；面向接口编程，无需程序员实现该接口，由MyBatis完成 -->
+
+    <!-- 添加团队 -->
+    <insert id="insertTeam" parameterType="cn.edu.tyust.scms.model.Team"><!-- 全限定的类名 -->
+        INSERT INTO team(competitionid, teamgroup, teamname, leader, adviser, registusername, registdate, award)
+        VALUES(#{competitionid},#{teamgroup},#{teamname},#{leader},#{adviser},#{registusername},STR_TO_DATE(#{registdate}, '%Y-%m-%d %H:%i:%s'), #{award})
+    </insert>
+    
+   <!-- 删除团队 -->
+    <insert id="deleteTeam" parameterType="String"><!-- 全限定的类名 -->
+        DELETE FROM team WHERE teamid = #{teamid} 
+    </insert>
+
+    <!-- 查找团队 -->
+    <resultMap id="teamInfoMap" type="cn.edu.tyust.scms.model.TeamInfo">
+        <result property="teamid" column="teamid" />
+        <result property="teamgroup" column="teamgroup" />
+        <result property="teamname" column="teamname" />
+        <result property="leader" column="leader" />
+        <result property="adviser" column="adviser" />
+        <result property="registusername" column="registusername" />
+        <result property="registdate" column="registdate" />
+        <result property="award" column="award" />
+        <result property="competitionname" column="competitionname" />
+    </resultMap>
+    <select id="selectTeamInfos" parameterType="java.util.Map" resultMap="teamInfoMap">
+        SELECT * FROM scms_team_info 
+        <where>
+            <if test="1 == 1"> AND award != 'xxx' </if>
+            <if test="teamgroup != null"> AND teamgroup LIKE CONCAT(CONCAT('%',#{teamgroup}),'%') </if>
+            <if test="teamname != null"> AND teamname LIKE CONCAT(CONCAT('%',#{teamname}),'%') </if>
+            <if test="adviser != null"> AND adviser LIKE CONCAT(CONCAT('%',#{adviser}),'%') </if><!-- 模糊查询 -->
+            <if test="registusername != null"> AND registusername = #{registusername} </if>
+            <if test="registdate != null"> AND registdate = #{registdate} </if>
+            <if test="award != null"> AND award = #{award} </if>
+            <if test="competitionname != null"> AND competitionname  LIKE CONCAT(CONCAT('%',#{competitionname}),'%') </if>
+        </where>
+    </select>
+    
+    <!-- 查找预准备的团队 -->
+    <select id="selectTeamUnique" parameterType="String" resultType="cn.edu.tyust.scms.model.Team">
+        SELECT * FROM team WHERE competitionid = #{competitionid}
+    </select>   
+    <select id="selectTeamByTeamid" parameterType="String" resultType="cn.edu.tyust.scms.model.Team">
+        SELECT * FROM team WHERE teamid = #{teamid}
+    </select>   
+    
+    <!-- 修改团队成员 -->
+    <update id="updateTeam" parameterType="cn.edu.tyust.scms.model.Team">
+       UPDATE team 
+       <set>
+            <if test="competitionid != null"> competitionid = #{competitionid}, </if>
+            <if test="teamgroup != null"> teamgroup = #{teamgroup}, </if>
+            <if test="teamname != null"> teamname = #{teamname}, </if>
+            <if test="adviser != null"> leader = #{leader}, </if>
+            <if test="adviser != null"> adviser = #{adviser}, </if>
+            <if test="registusername != null"> registusername = #{registusername}, </if>
+            <if test="registdate != null"> registdate = #{registdate}, </if>
+            <if test="award != null"> award = #{award} </if>
+       </set> 
+       WHERE teamid = #{teamid}
+    </update>
+    
+</mapper>

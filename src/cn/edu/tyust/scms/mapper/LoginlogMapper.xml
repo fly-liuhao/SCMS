@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.LoginlogMapper"> <!-- namespace指定为Mapper接口；面向接口编程，无需程序员实现该接口，由MyBatis完成 -->
+
+    <!-- 添加用登陆日志-->
+    <insert id="insertLoginlog"
+        parameterType="cn.edu.tyust.scms.model.Loginlog"><!-- 全限定的类名 -->
+        INSERT INTO loginlog(logid, userid, logintime, loginsite, loginip,loginos,loginbrowser,loginremark)
+        VALUES(NULL, #{userid},STR_TO_DATE(#{logintime}, '%Y-%m-%d %H:%i:%s'),#{loginsite},#{loginip},#{loginos},#{loginbrowser},#{loginremark})
+    </insert>
+    
+    <!-- 删除登陆日志 -->
+    <delete id="deleteLoginlog" parameterType="String">
+        DELETE FROM loginlog WHERE logid = #{logid}   
+    </delete>
+
+    <!-- 查找登陆日志 -->
+    <resultMap type="cn.edu.tyust.scms.model.LoginlogInfo" id="loginlogInfoMap">
+        <result property="logid" column="logid" />
+        <result property="userid" column="userid" />
+        <result property="username" column="username" />
+        <result property="realname" column="realname" />
+        <result property="logintime" column="logintime" />
+        <result property="loginsite" column="loginsite" />
+        <result property="loginip" column="loginip" />
+        <result property="loginos" column="loginos" />
+        <result property="loginbrowser" column="loginbrowser" />
+        <result property="loginremark" column="loginremark" />
+    </resultMap>
+    <select id="selectLoginlogInfos" parameterType="java.util.Map" resultMap="loginlogInfoMap">
+        SELECT * FROM scms_loginloginfo 
+        <where>
+            <if test="userid != null"> AND userid = #{userid} </if>
+            <if test="username != null"> AND username LIKE CONCAT(CONCAT('%',#{username}),'%') </if>
+            <if test="realname != null"> AND realname LIKE CONCAT(CONCAT('%',#{realname}),'%') </if>
+        </where>
+        ORDER BY logintime DESC
+    </select>
+    
+</mapper>

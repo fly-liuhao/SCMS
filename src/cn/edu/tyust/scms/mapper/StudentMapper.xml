@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.StudentMapper"> <!-- namespace指定为Mapper接口；面向接口编程，无需程序员实现该接口，由MyBatis完成 -->
+
+    <!-- 添加团队成员 -->
+    <insert id="insertStudent" parameterType="cn.edu.tyust.scms.model.Student"><!-- 全限定的类名 -->
+        INSERT INTO student(stuid, classid, stuname, sex, mobile)
+        VALUES(#{stuid},#{classid},#{stuname},#{sex},#{mobile})
+    </insert>
+    
+   <!-- 删除团队成员 -->
+    <insert id="deleteStudent" parameterType="String"><!-- 全限定的类名 -->
+        DELETE FROM student WHERE stuid = #{stuid} 
+    </insert>
+
+    <!-- 查找团队成员 -->
+    <resultMap id="studentMap" type="cn.edu.tyust.scms.model.Student">
+        <result property="stuid" column="stuid" />
+        <result property="stuname" column="stuname" />
+        <result property="sex" column="sex" />
+        <result property="mobile" column="mobile" />
+        <result property="classid" column="classid" />
+    </resultMap>
+    <resultMap id="studentInfoMap" type="cn.edu.tyust.scms.model.StudentInfo">
+        <result property="stuid" column="stuid" />
+        <result property="stuname" column="stuname" />
+        <result property="sex" column="sex" />
+        <result property="mobile" column="mobile" />
+        <result property="classid" column="classid" />
+        <result property="classname" column="classname" />
+        <result property="majorid" column="majorid" />
+        <result property="majorname" column="majorname" />
+        <result property="deptid" column="deptid" />
+        <result property="deptname" column="deptname" />
+        <result property="grade" column="grade" />
+    </resultMap>
+    <select id="selectStudents" parameterType="java.util.Map" resultMap="studentMap">
+        SELECT * FROM student 
+        <where>
+            <if test="stuid != null"> AND stuid = #{stuid} </if>
+            <if test="stuname != null"> AND stuname = #{stuname} </if>
+            <if test="sex != null"> AND sex = #{sex} </if>
+            <if test="mobile != null"> AND mobile = #{mobile} </if>
+            <if test="classid != null"> AND classid = #{classid} </if>
+        </where>
+    </select>
+    <!-- 查询学生信息 -->
+    <select id="selectStudentInfos" parameterType="java.util.Map" resultMap="studentInfoMap">
+        SELECT * FROM scms_studentinfo 
+        <where>
+            <if test="stuid != null"> AND stuid = #{stuid} </if>
+            <if test="stuname != null"> AND stuname LIKE CONCAT(CONCAT('%',#{stuname}),'%') </if>
+            <if test="sex != null"> AND sex = #{sex} </if>
+            <if test="mobile != null"> AND mobile = #{mobile} </if>
+            <if test="classid != null"> AND classid = #{classid} </if>
+            <if test="majorid != null"> AND majorid = #{majorid} </if>
+            <if test="deptid != null"> AND deptid = #{deptid} </if>
+            <if test="grade != null"> AND grade = #{grade} </if>
+        </where>
+    </select>
+    <!-- 查询正在录入团队的成员信息 -->
+    <select id="selectStuInfosByTeam" resultMap="studentInfoMap">
+        SELECT * FROM scms_studentinfo WHERE stuid IN 
+            (SELECT stuid FROM stu_team WHERE teamid = 
+                (SELECT teamid FROM team WHERE competitionid = 0));
+    </select>
+    <!-- 查询指定团队的成员信息 -->
+    <select id="selectStuInfosByTeamid" parameterType="String" resultMap="studentInfoMap">
+        SELECT * FROM scms_studentinfo WHERE stuid IN 
+            (SELECT stuid FROM stu_team WHERE teamid = #{teamid});
+    </select>
+    
+    <!-- 修改团队成员 -->
+    <update id="updateStudent" parameterType="cn.edu.tyust.scms.model.Student">
+       UPDATE student 
+       <set>
+            <if test="stuid != null"> stuid = #{stuid}, </if>
+            <if test="stuname != null"> stuname = #{stuname}, </if>
+            <if test="sex != null"> sex = #{sex}, </if>
+            <if test="mobile != null"> mobile = #{mobile}, </if>
+            <if test="classid != null"> classid = #{classid} </if>
+       </set> 
+       WHERE stuid = #{oldstuid}
+    </update>
+    
+    
+    <!-- 自定义resultMap --> 
+    <resultMap id="stucompetMap" type="cn.edu.tyust.scms.model.StuCompetition">
+        <result property="stuid" column="stuid" />
+        <result property="competitionid" column="competitionid" />
+        <result property="sturole" column="sturole" />
+        <result property="competitionname" column="competitionname" />
+        <result property="competitiondate" column="competitiondate" />
+        <result property="competitionlevel" column="competitionlevel" />
+        <result property="competitiontype" column="competitiontype" />
+        <result property="competitiondescribe" column="competitiondescribe" />
+    </resultMap>
+    <!-- 根据学生id查询 -->
+    <select id="selectStudentCompetitions" parameterType="String" resultMap="stucompetMap">
+        SELECT * FROM scms_competition_by_stuid WHERE stuid = #{stuid}
+    </select>
+</mapper>

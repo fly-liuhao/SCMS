@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>统计信息查询</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/statis/find_statinfo.js"></script>
+		<style type="text/css">
+			.lable_width {
+				width: 90px!important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>统计信息查询</legend>
+				</fieldset>
+				<div style="margin: 10px 10px 10px 10px">
+					<form class="layui-form layui-form-pane" action="">
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label lable_width">学号</label>
+								<div class="layui-input-inline">
+									<input type="text" name="stuid" id="stuid" autocomplete="off"  placeholder="请输入学号" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label lable_width">班号</label>
+								<div class="layui-input-inline">
+									<input type="text" name="classid" id="classid" autocomplete="off"  placeholder="请输入班号" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label lable_width">专业</label>
+								<div class="layui-input-inline">
+									<select name="major" id="major" >
+				                        <option value="" selected="selected"></option>
+				                    </select>
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label lable_width">年级</label>
+								<div class="layui-input-inline">
+									<input type="text" name="grade" id="grade" autocomplete="off" class="layui-input" placeholder="请选择年级" readonly="readonly">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label lable_width">赛事名称</label>
+								<div class="layui-input-inline">
+									<select name="competition" id="competition" autocomplete="off">
+				                        <option value="" selected=""></option>
+				                    </select>
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label lable_width">指导老师</label>
+								<div class="layui-input-inline">
+									<input type="text" name="adviser" id="adviser" autocomplete="off"  placeholder="请输入指导老师" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label lable_width">获奖情况</label>
+								<div class="layui-input-inline">
+										<select name="award" id="award" autocomplete="off">
+					                        <option value="" selected=""></option>
+					                        <option value="待定">待定</option>
+					                        <option value="特等奖">特等奖</option>
+					                        <option value="一等奖">管理员</option>
+					                        <option value="二等奖">一等奖</option>
+					                        <option value="三等奖">三等奖</option>
+					                        <option value="优秀奖">优秀奖</option>
+					                        <option value="未获奖">未获奖</option>
+					                    </select>
+								</div>
+							</div>
+							<div class="layui-inline" style="position: relative; left: 0px;" >
+								<button class="layui-btn" lay-submit="" lay-filter="data-search-btn"><i class="layui-icon layui-icon-search"></i> 搜索</button>
+								<button type="reset" class="layui-btn layui-btn-primary"><i class="layui-icon layui-icon-refresh"></i>重置</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--表格头部-->
+				<script type="text/html" id="tablebar"></script>
+				<!--layui数据表格-->
+				<table class="layui-hide" id="ststInfoTableId" ></table>
+			</div>
+		</div>
+		<ins class="adsbygoogle" style="display:inline-block;width:970px;height:10px"></ins>
+	</body>
+
+</html>

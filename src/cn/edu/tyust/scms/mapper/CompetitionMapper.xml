@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.CompetitionMapper"> 
+    <!-- 添加赛事 -->
+    <insert id="insertCompetition" parameterType="cn.edu.tyust.scms.model.Competition">
+        INSERT INTO competition (competitionname, competitiondate, competitionlevel, competitiontype, competitiondescribe)
+        VALUES(#{competitionname}, STR_TO_DATE(#{competitiondate}, '%Y-%m-%d'), #{competitionlevel}, #{competitiontype}, #{competitiondescribe})
+    </insert>
+
+    <!-- 删除赛事 -->
+    <delete id="deleteCompetition" parameterType="String">
+        DELETE FROM competition WHERE competitionid = #{competitionid}
+    </delete>  
+    
+    <!-- 修改赛事 -->
+    <update id="updateCompetition" parameterType="cn.edu.tyust.scms.model.Competition">
+        UPDATE competition
+        <set>
+            <if test="competitionname != null">competitionname = #{competitionname},</if>
+            <if test="competitiondate != null">competitiondate = STR_TO_DATE(#{competitiondate}, '%Y-%m-%d'),</if>
+            <if test="competitionlevel != null">competitionlevel = #{competitionlevel},</if>
+            <if test="competitiontype != null">competitiontype = #{competitiontype},</if>
+            <if test="competitiondescribe != null">competitiondescribe = #{competitiondescribe},</if>
+        </set>
+        WHERE competitionid = #{competitionid}
+    </update> 
+    
+    <!-- 自定义resultMap --> 
+    <resultMap id="competMap" type="cn.edu.tyust.scms.model.Competition">
+        <result property="competitionid" column="competitionid" />
+        <result property="competitionname" column="competitionname" />
+        <result property="competitiondate" column="competitiondate" />
+        <result property="competitionlevel" column="competitionlevel" />
+        <result property="competitiontype" column="competitiontype" />
+        <result property="competitiondescribe" column="competitiondescribe" />
+    </resultMap>
+    
+    <!-- 多条件查询赛事信息 -->
+    <select id="selectCompetitions" parameterType="java.util.Map" resultMap="competMap">
+        SELECT competitionid, competitionname, DATE_FORMAT(competitiondate, '%Y-%m') AS competitiondate, competitionlevel, competitiontype, competitiondescribe FROM competition 
+        <where>
+            <if test="1 == 1">AND competitionid != '0'</if>
+            <if test="competitionid != null">AND competitionid = #{competitionid}</if>
+            <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
+            <if test="enddate != null">AND competitiondate &lt;= STR_TO_DATE(#{enddate},'%Y-%m')</if>
+            <if test="competitionlevel != null">AND competitionlevel = #{competitionlevel}</if>
+            <if test="competitiontype != null">AND competitiontype = #{competitiontype}</if>
+        </where>
+        ORDER BY competitiondate DESC
+    </select>
+    <!-- 多条件查询赛事信息2 -->
+    <select id="selectCompetitions2" parameterType="java.util.Map" resultMap="competMap">
+        SELECT competitionid, competitionname, DATE_FORMAT(competitiondate, '%Y-%m') AS competitiondate, competitionlevel, competitiontype, competitiondescribe FROM competition 
+        <where>
+            <if test="1 == 1">AND competitionid != '0'</if>
+            <if test="competitionid != null">AND competitionid = #{competitionid}</if>
+            <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
+            <if test="enddate != null">AND competitiondate &lt;= STR_TO_DATE(#{enddate},'%Y-%m')</if>
+            <if test="competitionlevel != null">AND competitionlevel = #{competitionlevel}</if>
+            <if test="competitiontype != null">AND competitiontype = #{competitiontype}</if>
+        </where>
+        ORDER BY competitiondate DESC
+    </select>
+    <!-- 查询符合条件赛事信息的个数 -->
+    <select id="getCompetitionNumber" parameterType="java.util.Map" resultType="Integer">
+        SELECT COUNT(*) AS recordnumber FROM competition 
+        <where>
+            <if test="1 == 1">AND competitionid != '0'</if>
+            <if test="competitionid != null">AND competitionid = #{competitionid}</if>
+            <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
+            <if test="enddate != null">AND competitiondate &lt;= STR_TO_DATE(#{enddate},'%Y-%m')</if>
+            <if test="competitionlevel != null">AND competitionlevel = #{competitionlevel}</if>
+            <if test="competitiontype != null">AND competitiontype = #{competitiontype}</if>
+        </where>
+    </select>
+    
+    <!-- 查询赛事是否已经存在 -->
+    <select id="checkCompetition" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) AS recordnumber FROM competition WHERE competitionname = #{competitionname}
+    </select>
+     
+</mapper>

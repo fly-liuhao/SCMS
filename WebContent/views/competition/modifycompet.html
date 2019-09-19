@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>修改赛事</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/competition/modifycompet.js"></script>
+		<style>
+			.custom_input_width {
+				width: 250px;
+			}
+			
+			.custom_textarea_width {
+				width: 310px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>赛事信息</legend>
+				</fieldset>
+
+				<form class="layui-form" action="" lay-filter="example">
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>赛事名称：</label>
+						<div class="layui-input-block custom_input_width">
+							<input type="hidden" name="competitionid" id="competitionid" class="layui-input">
+                            <input type="text" name="competitionname" id="competitionname" lay-verify="competitionname" autocomplete="off" placeholder="请输入赛事名称" class="layui-input">
+                        </div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>举办时间：</label>
+						<div class="layui-input-block custom_input_width">
+							<input type="text" name="competitiondate" id="competitiondate" lay-verify="competitiondate" autocomplete="off" placeholder="请选择举办时间" class="layui-input" readonly="readonly">
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>赛事级别：</label>
+						<div class="layui-input-block custom_input_width">
+							<select name="competitionlevel" id="competitionlevel" autocomplete="off" lay-verify="competitionlevel_select">
+		                        <option value="" selected=""></option>
+		                        <option value="国家级">国家级</option>
+		                        <option value="省级">省级</option>
+		                        <option value="校级">校级</option>
+		                        <option value="院系">院系</option>
+		                    </select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>赛事类型：</label>
+						<div class="layui-input-block custom_input_width">
+							<select name="competitiontype" id="competitiontype" autocomplete="off" lay-verify="competitiontype_select">
+		                        <option value="" selected="selected"></option>
+		                        <option value="A类">A类</option>
+		                        <option value="B类">B类</option>
+		                        <option value="C类">C类</option>
+		                        <option value="其它类">其它</option>
+		                    </select>
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">赛事说明：</label>
+						<div class="layui-input-block custom_textarea_width">
+							<textarea name="competitiondescribe" id="competitiondescribe" autocomplete="off" lay-verify="content" class="layui-textarea"></textarea>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" lay-submit="" lay-filter="form" style="position: relative;left: 70px;">确认修改</button>
+						</div>
+					</div>
+                    <div class="layui-form-item"style="display:inline-block;width:100%;height:0px"></div>
+				</form>
+
+			</div>
+		</div>
+	</body>
+
+</html>

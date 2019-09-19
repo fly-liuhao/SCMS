@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="../../" />
+    <meta charset="utf-8">
+    <title>首页二</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="css/public.css" media="all">
+    <script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+	<script src="lib/echarts/echarts.min.js" charset="utf-8"></script>
+    <script src="js/statis/welcome.js" charset="utf-8"></script>
+	
+    <style>
+        .layui-card {border:1px solid #f2f2f2;border-radius:5px;}
+        .icon {margin-right:10px;color:#1aa094;}
+        .icon-cray {color:#ffb800!important;}
+        .icon-blue {color:#1e9fff!important;}
+        .icon-tip {color:#ff5722!important;}
+        .layuimini-qiuck-module {text-align:center;margin-top: 10px}
+        .layuimini-qiuck-module a i {display:inline-block;width:100%;height:60px;line-height:60px;text-align:center;border-radius:2px;font-size:30px;background-color:#F8F8F8;color:#333;transition:all .3s;-webkit-transition:all .3s;}
+        .layuimini-qiuck-module a cite {position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px;}
+        .welcome-module {width:100%;height:210px;}
+        .panel {background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+        .panel-body {padding:10px}
+        .panel-title {margin-top:0;margin-bottom:0;font-size:12px;color:inherit}
+        .label {display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;margin-top: .3em;}
+        .layui-red {color:red}
+        .main_btn > p {height:40px;}
+        .layui-bg-number {background-color:#F8F8F8;}
+        .layuimini-notice:hover {background:#f6f6f6;}
+        .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+        .layuimini-notice-title,.layuimini-notice-label {
+            padding-right: 70px !important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important;}
+        .layuimini-notice-title {line-height:28px;font-size:14px; width: 70%}
+        .layuimini-notice-extra {position:absolute;top:50%;margin-top:-10px;right:0px;display:inline-block;height:16px;color:#999;}
+        
+        .layui-text{  min-width: 380px; right:10px }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-warning icon"></i>数据统计</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-blue">实时</span>
+                                                        <h5>学院</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">563</h1>
+                                                        <small>学院当前总学生人数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-cyan">实时</span>
+                                                        <h5>参赛</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins" id="stunum">0</h1>
+                                                        <small>学院当前总参赛学生人数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-orange">实时</span>
+                                                        <h5>获奖</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins" id="winnum">0</h1>
+                                                        <small>学院当前获奖学生总人数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-green">实时</span>
+                                                        <h5>未获奖</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins" id="losernum">0</h1>
+                                                        <small>学院当前未获奖学生总人数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>快捷入口</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10 layuimini-qiuck">
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="views/classes/findclass.html" data-title="班级查询" data-icon="fa fa-search">
+                                                <i class="fa fa-university"></i>
+                                                <cite>班级查询</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="views/competition/findcompet.html" data-title="赛事查询" data-icon="fa fa-search">
+                                                <i class="fa fa-trophy"></i>
+                                                <cite>赛事查询</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="views/team/findteam.html" data-title="团队查询" data-icon="fa fa-search">
+                                                <i class="fa fa-group"></i>
+                                                <cite>团队查询</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="views/statis/find_statinfo.html" data-title="统计信息查询" data-icon="fa fa-search">
+                                                <i class="fa fa-pie-chart"></i>
+                                                <cite>统计查询</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="views/classes/addclass.html" data-title="添加班级" data-icon="fa fa-plus-square-o">
+                                                <i class="fa fa-university"></i>
+                                                <cite>添加班级</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="views/competition/addcompet.html" data-title="添加赛事" data-icon="fa fa-plus-square-o">
+                                                <i class="fa fa-trophy"></i>
+                                                <cite>添加赛事</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="views/team/addteam.html" data-title="添加团队" data-icon="fa fa-plus-square-o">
+                                                <i class="fa fa-group"></i>
+                                                <cite>添加团队</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="views/statis/statis.html" data-title="统计成员" data-icon="fa fa-bar-chart">
+                                                <i class="fa fa-bar-chart"></i>
+                                                <cite>统计成员</cite>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>报表统计</div>
+                            <div class="layui-card-body">
+                                <div id="echarts-records" style="width: 100%;min-height:500px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-col-md4">
+
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>最近登陆</div>
+                    <div class="layui-card-body layui-text">
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title" id="notice-title_1"></div>
+                            <div class="layuimini-notice-extra" id="notice-extra_1"></div>
+                        </div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title" id="notice-title_2"></div>
+                            <div class="layuimini-notice-extra" id="notice-extra_2"></div>
+                        </div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title" id="notice-title_3"></div>
+                            <div class="layuimini-notice-extra" id="notice-extra_3"></div>
+                        </div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title" id="notice-title_4"></div>
+                            <div class="layuimini-notice-extra" id="notice-extra_4"></div>
+                        </div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title" id="notice-title_5"></div>
+                            <div class="layuimini-notice-extra" id="notice-extra_5"></div>
+                        </div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title" id="notice-title_6"></div>
+                            <div class="layuimini-notice-extra" id="notice-extra_6"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-fire icon"></i>版本信息</div>
+                    <div class="layui-card-body layui-text">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="100">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>项目名称</td>
+                                <td>
+                                	太原科技大学创新竞赛管理平台
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>当前版本</td>
+                                <td>V1.0</td>
+                            </tr>
+                            <tr>
+                                <td>作者</td>
+                                <td> 太原工业学院 / 软件工程 / 刘浩</td>
+                            </tr>
+                            <tr>
+                                <td>主要特色</td>
+                                <td> 功能完善 / 界面清爽 / 极简</td>
+                            </tr>
+                            <tr>
+                                <td>Gitee</td>
+                                <td style="padding-bottom: 0;">
+                                    <div class="layui-btn-container">
+                                        <a href="https://gitee.com/zhongshaofa/layuimini" target="_blank" style="margin-right: 15px"><img src="https://gitee.com/fly-liuhao/SCMS/badge/star.svg?theme=dark" alt="star"></a>
+                                        <a href="https://gitee.com/fly-liuhao/SCMS" target="_blank"><img src="https://gitee.com/fly-liuhao/SCMS/badge/fork.svg?theme=dark" alt="fork"></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Github</td>
+                                <td style="padding-bottom: 0;">
+                                    <div class="layui-btn-container">
+                                        <iframe src="https://ghbtns.com/github-btn.html?user=fly-liuhao&repo=SCMS&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+                                        <iframe src="https://ghbtns.com/github-btn.html?user=fly-liuhao&repo=SCMS&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-paper-plane-o icon"></i>作者心语</div>
+                    <div class="layui-card-body layui-text layadmin-text">
+                        <p>本项目前端基于Layui2.5.4以及font-awesome-4.7.0搭建，后端采用分层开发模式进行实现：数据访问层DAO层、业务层Service层以及逻辑层Servlet层。</p>
+                        <p>项目开源地址：<a class="layui-btn layui-btn-xs layui-btn-danger" target="_blank" href="https://gitee.com/fly-liuhao/SCMS">Gitee</a></p>
+                        <p>喜欢此项目的可以给我的GitHub和Gitee加个Star支持一下</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.StatInfoMapper"> 
+   
+    
+    <!-- 自定义resultMap --> 
+    <resultMap id="statInfotMap" type="cn.edu.tyust.scms.model.StatInfo">
+        <result property="stuid" column="stuid" />
+        <result property="stuname" column="stuname" />
+        <result property="classid" column="classid" />
+        <result property="classname" column="classname" />
+        <result property="majorid" column="majorid" />
+        <result property="majorname" column="majorname" />
+        
+        <result property="grade" column="grade" />
+        <result property="teamid" column="teamid" />
+        <result property="teamname" column="teamname" />
+        <result property="sturole" column="sturole" />
+        <result property="competitionid" column="competitionid" />
+        <result property="competitionname" column="competitionname" />
+        
+        <result property="competitiondate" column="competitiondate" />
+        <result property="adviser" column="adviser" />
+        <result property="award" column="award" />
+    </resultMap>
+    
+    <!-- 多条件查询赛事信息 -->
+    <select id="selectStatInfos" parameterType="java.util.Map" resultMap="statInfotMap">
+        SELECT * FROM scms_statinfo
+        <where>
+            <if test="1 == 1">AND award != 'xxx'</if>
+            
+            <if test="stuid != null">AND stuid = #{stuid}</if>
+            <if test="stuname != null">AND stuname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            <if test="classid != null">AND classid = #{classid}</if>
+            <if test="classname != null">AND classname LIKE CONCAT(CONCAT('%',#{classname}),'%')</if>
+            <if test="majorid != null">AND majorid = #{majorid}</if>
+            <if test="majorname != null">AND majorname LIKE CONCAT(CONCAT('%',#{majorname}),'%')</if>
+            
+            <if test="grade != null">AND grade = #{grade}</if>
+            <if test="teamid != null">AND teamid = #{teamid}</if>
+            <if test="teamname != null">AND teamname LIKE CONCAT(CONCAT('%',#{teamname}),'%')</if>
+            <if test="sturole != null">AND sturole = #{sturole}</if>
+            <if test="competitionid != null">AND competitionid = #{competitionid}</if>
+            <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            
+            <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
+            <if test="enddate != null">AND competitiondate &lt;= STR_TO_DATE(#{enddate},'%Y-%m')</if>
+            <if test="adviser != null">AND adviser LIKE CONCAT(CONCAT('%',#{adviser}),'%') </if>
+            <if test="award != null">AND award = #{award}</if>
+        </where>
+        ORDER BY competitiondate DESC
+    </select>
+    <!-- 多条件查询赛事信息（带分页） -->
+    <select id="selectStatInfoPage" parameterType="java.util.Map" resultMap="statInfotMap">
+        SELECT * FROM scms_statinfo
+        <where>
+            <if test="1 == 1">AND award != 'xxx'</if>
+            
+            <if test="stuid != null">AND stuid = #{stuid}</if>
+            <if test="stuname != null">AND stuname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            <if test="classid != null">AND classid = #{classid}</if>
+            <if test="classname != null">AND classname LIKE CONCAT(CONCAT('%',#{classname}),'%')</if>
+            <if test="majorid != null">AND majorid = #{majorid}</if>
+            <if test="majorname != null">AND majorname LIKE CONCAT(CONCAT('%',#{majorname}),'%')</if>
+            
+            <if test="grade != null">AND grade = #{grade}</if>
+            <if test="teamid != null">AND teamid = #{teamid}</if>
+            <if test="teamname != null">AND teamname LIKE CONCAT(CONCAT('%',#{teamname}),'%')</if>
+            <if test="sturole != null">AND sturole = #{sturole}</if>
+            <if test="competitionid != null">AND competitionid = #{competitionid}</if>
+            <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            
+            <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
+            <if test="enddate != null">AND competitiondate &lt;= STR_TO_DATE(#{enddate},'%Y-%m')</if>
+            <if test="adviser != null">AND adviser LIKE CONCAT(CONCAT('%',#{adviser}),'%') </if>
+            <if test="award != null">AND award = #{award}</if>
+        </where>
+        ORDER BY competitiondate DESC
+    </select>
+    
+    <!-- 查询符合条件赛事信息的个数 -->
+    <select id="selectStatInfoCount" parameterType="java.util.Map" resultType="Integer">
+        SELECT COUNT(*) FROM scms_statinfo
+        <where>
+            <if test="1 == 1">AND award != 'xxx'</if>
+            
+            <if test="stuid != null">AND stuid = #{stuid}</if>
+            <if test="stuname != null">AND stuname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            <if test="classid != null">AND classid = #{classid}</if>
+            <if test="classname != null">AND classname LIKE CONCAT(CONCAT('%',#{classname}),'%')</if>
+            <if test="majorid != null">AND majorid = #{majorid}</if>
+            <if test="majorname != null">AND majorname LIKE CONCAT(CONCAT('%',#{majorname}),'%')</if>
+            
+            <if test="grade != null">AND grade = #{grade}</if>
+            <if test="teamid != null">AND teamid = #{teamid}</if>
+            <if test="teamname != null">AND teamname LIKE CONCAT(CONCAT('%',#{teamname}),'%')</if>
+            <if test="sturole != null">AND sturole = #{sturole}</if>
+            <if test="competitionid != null">AND competitionid = #{competitionid}</if>
+            <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            
+            <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
+            <if test="enddate != null">AND competitiondate &lt;= STR_TO_DATE(#{enddate},'%Y-%m')</if>
+            <if test="adviser != null">AND adviser LIKE CONCAT(CONCAT('%',#{adviser}),'%') </if>
+            <if test="award != null">AND award = #{award}</if>
+        </where>
+    </select>
+    
+    <!-- 多条件查询赛事信息(获奖) -->
+    <select id="selectWinStatInfo" parameterType="java.util.Map" resultMap="statInfotMap">
+        SELECT * FROM scms_statinfo
+        <where>
+            <if test="1 == 1">AND award != 'xxx' AND award != '未获奖' AND award != '待定' </if>
+            
+            <if test="stuid != null">AND stuid = #{stuid}</if>
+            <if test="stuname != null">AND stuname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            <if test="classid != null">AND classid = #{classid}</if>
+            <if test="classname != null">AND classname LIKE CONCAT(CONCAT('%',#{classname}),'%')</if>
+            <if test="majorid != null">AND majorid = #{majorid}</if>
+            <if test="majorname != null">AND majorname LIKE CONCAT(CONCAT('%',#{majorname}),'%')</if>
+            
+            <if test="grade != null">AND grade = #{grade}</if>
+            <if test="teamid != null">AND teamid = #{teamid}</if>
+            <if test="teamname != null">AND teamname LIKE CONCAT(CONCAT('%',#{teamname}),'%')</if>
+            <if test="sturole != null">AND sturole = #{sturole}</if>
+            <if test="competitionid != null">AND competitionid = #{competitionid}</if>
+            <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
+            
+            <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
+            <if test="enddate != null">AND competitiondate &lt;= STR_TO_DATE(#{enddate},'%Y-%m')</if>
+            <if test="adviser != null">AND adviser LIKE CONCAT(CONCAT('%',#{adviser}),'%') </if>
+        </where>
+        ORDER BY competitiondate DESC
+    </select>
+     
+</mapper>

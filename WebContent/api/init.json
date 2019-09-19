@@ -1,0 +1,125 @@
+{
+    "clearInfo": {
+        "clearUrl": "api/clear.json"
+    },
+    "homeInfo": {
+        "title": "首页",
+        "icon": "fa fa-home",
+        "href": "views/statis/welcome.html"
+    },
+    "logoInfo": {
+
+        "title": "images/scms.png",
+        "image": "images/tyust.png",
+        "href": ""
+    },
+    "menuInfo": {
+        "currency": {
+            "title": "常规操作",
+            "icon": "fa fa-address-book",
+            "child": [
+                {
+                    "title": "班级管理",
+                    "href": "",
+                    "icon": "fa fa-university",
+                    "target": "_self",
+                    "child": [
+                        {
+                            "title": "添加班级",
+                            "href": "views/classes/addclass.html",
+                            "icon": "fa fa-plus-square-o",
+                            "target": "_self"
+                        }, {
+                            "title": "查询班级",
+                            "href": "views/classes/findclass.html",
+                            "icon": "fa fa-search",
+                            "target": "_self"
+                        }
+                    ]
+                }, {
+                    "title": "赛事管理",
+                    "href": "",
+                    "icon": "fa fa-trophy",
+                    "target": "_self",
+                    "child": [
+                        {
+                            "title": "添加赛事",
+                            "href": "views/competition/addcompet.html",
+                            "icon": "fa fa-plus-square-o",
+                            "target": "_self"
+                        }, {
+                            "title": "查询赛事",
+                            "href": "views/competition/findcompet.html",
+                            "icon": "fa fa-search",
+                            "target": "_self"
+                        }
+                    ]
+                }, {
+                    "title": "团队管理",
+                    "href": "",
+                    "icon": "fa fa-group",
+                    "target": "_self",
+                    "child": [
+                        {
+                            "title": "录入团队",
+                            "href": "views/team/addteam.html",
+                            "icon": "fa fa-pencil-square-o",
+                            "target": "_self"
+                        }, {
+                            "title": "查询团队",
+                            "href": "views/team/findteam.html",
+                            "icon": "fa fa-search",
+                            "target": "_self"
+                        }, {
+                            "title": "查询参赛学生",
+                            "href": "views/team/findstudent.html",
+                            "icon": "fa fa-search",
+                            "target": "_self"
+                        }
+                    ]
+                }, {
+                    "title": "查询统计",
+                    "href": "",
+                    "icon": "fa fa-pie-chart",
+                    "target": "_self",
+                    "child": [
+                        {
+                            "title": "统计结果",
+                            "href": "views/statis/statis.html",
+                            "icon": "fa fa-bar-chart",
+                            "target": "_self"
+                        }, {
+                            "title": "查询统计信息",
+                            "href": "views/statis/find_statinfo.html",
+                            "icon": "fa fa-search",
+                            "target": "_self"
+                        }
+                    ]
+                }, {
+                    "title": "用户管理",
+                    "href": "",
+                    "icon": "fa fa-user-o",
+                    "target": "",
+                    "child": [
+                        {
+                            "title": "添加用户",
+                            "href": "views/user/adduser.html",
+                            "icon": "fa fa-plus-square-o",
+                            "target": "_self"
+                        }, {
+                            "title": "查询用户",
+                            "href": "views/user/finduser.html",
+                            "icon": "fa fa-search",
+                            "target": "_self"
+                        }, {
+                            "title": "历史登录记录",
+                            "href": "views/user/finduser_loginlog.html",
+                            "icon": "fa fa-wpforms",
+                            "target": "_self"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

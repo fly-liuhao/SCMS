@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.DepartmentMapper"> 
+    
+    <!-- 自定义resultMap --> 
+    <resultMap id="deptMap" type="cn.edu.tyust.scms.model.Department">
+        <result property="deptid" column="deptid" />
+        <result property="deptname" column="deptname" />
+        <result property="deptremark" column="deptremark" />
+    </resultMap>
+    
+    <!-- 多条件查询院系 -->
+    <select id="selectDepartments" parameterType="java.util.Map" resultMap="deptMap">
+        SELECT * FROM department 
+        <where>
+            <if test="deptid != null">AND deptid LIKE CONCAT(CONCAT('%',#{deptid}),'%')</if>
+            <if test="deptname != null">AND deptname LIKE CONCAT(CONCAT('%',#{deptname}),'%')</if>
+        </where>
+    </select>
+     
+</mapper>

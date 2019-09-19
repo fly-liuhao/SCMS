@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>团队成员信息</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/team/team_member.js"></script>
+	</head>
+
+	<body>
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>团队成员信息</legend>
+				</fieldset>	
+				<!-- 隐藏的团队ID框 -->
+				<input type="hidden" id="teamid"/>			
+				<!--表格头部-->
+				<script type="text/html" id="tablebar"></script>
+				<!--layui数据表格-->
+				<table class="layui-hide" id="teammemberTableId" lay-filter="teammemberTableFilter"></table>
+			</div>
+		</div>
+		<ins class="adsbygoogle" style="display:inline-block;width:100%;height:10px"></ins>
+	</body>
+
+</html>

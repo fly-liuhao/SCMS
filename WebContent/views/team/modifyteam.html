@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>修改比赛团队</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/team/modifyteam.js"></script>
+	</head>
+
+	<body>
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>团队'信息</legend>
+				</fieldset>
+ 
+				<div style="margin: 10px 10px 10px 10px">
+					<form class="layui-form layui-form-pane" action="">
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">团队组别</label>
+								<div class="layui-input-inline">
+					                <!-- 隐藏的团队ID框 -->
+			                        <input type="hidden" id="teamid" name="teamid"/> 
+			                        <!-- 隐藏的团队组长框 -->
+                                    <input type="hidden" name="oldleader" id="oldleader" >
+									<input type="text" id="teamgroup" name="teamgroup" lay-verify="teamgroup" placeholder="请输入团队组别" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label">团队名称</label>
+								<div class="layui-input-inline">
+									<input type="text" id="teamname" name="teamname" lay-verify="teamname" placeholder="请输入团队名称" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label">参与赛事</label>
+								<div class="layui-input-block" style="width: 400px;">
+									<select name="competition" id="competition" lay-verify="competition" autocomplete="off">
+				                        <option value="" selected=""></option>
+				                    </select>
+								</div>
+							</div>
+							
+							<!--layui数据表格-->
+							<table class="layui-hide" id="teamMemberTableId" lay-filter="teamMemberTableFilter"></table>
+							
+							<div style="margin-top: 15px;">
+								<div class="layui-inline">
+									<label class="layui-form-label">组长</label>
+									<div class="layui-input-block">
+										<select name="leader" id="leader" lay-verify="leader" autocomplete="off">
+					                        <option value="" selected=""></option>
+					                    </select>
+									</div>
+								</div>
+								<div class="layui-inline" style="margin-left: 9px;">
+									<label class="layui-form-label">指导老师</label>
+									<div class="layui-input-inline">
+										<input type="text" id="adviser" name="adviser" lay-verify="adviser" placeholder="请填写指导老师" autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline">
+									<label class="layui-form-label">获奖情况</label>
+									<div class="layui-input-block" style="width: 400px;">
+										<select name="award" id="award" lay-verify="award" autocomplete="off">
+					                        <option value="" selected=""></option>
+					                        <option value="待定">待定</option>
+					                        <option value="特等奖">特等奖</option>
+					                        <option value="一等奖">一等奖</option>
+					                        <option value="二等奖">二等奖</option>
+					                        <option value="三等奖">三等奖</option>
+					                        <option value="优秀奖">优秀奖</option>
+					                        <option value="未获奖">未获奖</option>
+					                    </select>
+									</div>
+								</div>
+							</div>
+							<div class="layui-form-item" style="position: relative; left: 500px;">
+								<br><br>
+								<button class="layui-btn" lay-submit="" lay-filter="form"><i class="layui-icon layui-icon-ok"></i>修改</button>
+								<a class="layui-btn"id="exit"><i class="layui-icon layui-icon-return"></i>退出</a>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!--表格头部-->
+				<script type="text/html" id="tablebar">
+					<div class="layui-btn-group layui-inline">
+						<a id="addstudent" class="layui-btn layui-btn-normal data-add-btn" data-method="addmember"><i class="layui-icon layui-icon-add-1"></i>添加</a>
+					</div>
+					<div class="layui-inline" style="position: relative; left: 40%">
+						<span class="" style="font-size:20px; font-family: '宋体'; color: #1AA094;">团队成员</span>
+					</div>
+				</script>
+				
+				<!--自定义的列模板-->
+				<script type="text/html" id="currentTableBar">
+					<a class="layui-btn layui-btn-xs data-count-edit" data-method="modifymember" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>修改</a>
+					<a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</a>
+				</script>
+			</div>
+		</div>
+	</body>
+
+</html>

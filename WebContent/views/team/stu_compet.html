@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>参与赛事</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/team/stu_compet.js"></script>
+	</head>
+
+	<body>
+	
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>参与赛事</legend>
+				</fieldset>
+			    <!-- 记录用户id的文本框 -->
+                <input type="hidden" id="stuid" name="stuid"/>    
+				<!--表格头部-->
+				<script type="text/html" id="tablebar"></script>
+				<!--layui数据表格-->
+				<table class="layui-hide" id="competitionTableId" lay-filter="competitionTableFilter"></table>
+			</div>
+		</div>
+
+	</body>
+
+</html>

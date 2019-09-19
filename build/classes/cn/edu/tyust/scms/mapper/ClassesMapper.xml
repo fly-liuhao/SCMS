@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.ClassesMapper"> 
+    <!-- 添加班级 -->
+    <insert id="insertClass" parameterType="cn.edu.tyust.scms.model.Classes">
+        INSERT INTO classes (classid, majorid, classname, grade, classremark)
+        VALUES(#{classid},#{majorid},#{classname},#{grade},#{classremark})
+    </insert>
+
+    <!-- 删除班级 -->
+    <delete id="deleteClass" parameterType="String">
+        DELETE FROM classes WHERE classid = #{classid}
+    </delete>  
+    
+    <!-- 修改班级 -->
+    <update id="updateClass" parameterType="cn.edu.tyust.scms.model.Classes">
+        UPDATE classes
+        <set>
+            <if test="classid != null">classid = #{classid},</if>
+            <if test="majorid != null">majorid = #{majorid},</if>
+            <if test="classname != null">classname = #{classname},</if>
+            <if test="grade != null">grade = #{grade},</if>
+            <if test="classremark != null">classremark = #{classremark}</if>
+        </set>
+        WHERE classid = #{oldclassid}
+    </update> 
+    
+    <!-- 自定义resultMap --> 
+    <resultMap id="classMap" type="cn.edu.tyust.scms.model.Classes">
+        <result property="classid" column="classid" />
+        <result property="majorid" column="majorid" />
+        <result property="classname" column="classname" />
+        <result property="grade" column="grade" />
+        <result property="classremark" column="classremark" />
+    </resultMap>
+    
+    <resultMap id="classinfoMap" type="cn.edu.tyust.scms.model.ClassesInfo">
+        <result property="grade" column="grade" />
+        <result property="deptid" column="deptid" />
+        <result property="deptname" column="deptname" />
+        <result property="majorid" column="majorid" />
+        <result property="majorname" column="majorname" />
+        <result property="classid" column="classid" />
+        <result property="classname" column="classname" />
+        <result property="classremark" column="classremark" />
+    </resultMap>
+    
+    <!-- 多条件查询班级信息 -->
+    <select id="selectClasses" parameterType="java.util.Map" resultMap="classinfoMap">
+        SELECT * FROM scms_classinfo 
+        <where>
+            <if test="grade != null">AND grade = #{grade}</if>
+            <if test="deptid != null">AND deptid = #{deptid}</if>
+            <if test="majorid != null">AND majorid = #{majorid}</if>
+            <if test="classid != null">AND classid LIKE CONCAT(CONCAT('%',#{classid}),'%')</if>
+            <if test="classname != null">AND classname LIKE CONCAT(CONCAT('%',#{classname}),'%')</if>
+        </where>
+        ORDER BY grade ASC
+    </select>
+    <!-- 查询符合条件班级信息的个数 -->
+    <select id="getClassNumber" parameterType="java.util.Map" resultType="Integer">
+        SELECT COUNT(*) AS recordnumber FROM scms_classinfo 
+        <where>
+            <if test="grade != null">AND grade = #{grade}</if>
+            <if test="deptid != null">AND deptid = #{deptid}</if>
+            <if test="majorid != null">AND majorid = #{majorid}</if>
+            <if test="classid != null">AND classid LIKE CONCAT(CONCAT('%',#{classid}),'%')</if>
+            <if test="classname != null">AND classname LIKE CONCAT(CONCAT('%',#{classname}),'%')</if>
+        </where>
+    </select>
+     
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.StuTeamRelationMapper"> <!-- namespace指定为Mapper接口；面向接口编程，无需程序员实现该接口，由MyBatis完成 -->
+
+    <!-- 添加团队成员关系 -->
+    <insert id="insertStuTeamRelation" parameterType="cn.edu.tyust.scms.model.StuTeamRelation"><!-- 全限定的类名 -->
+        INSERT INTO stu_team(stuid, teamid, sturole) VALUES(#{stuid},#{teamid},#{sturole})
+    </insert>
+    
+   <!-- 删除团队成员关系 -->
+    <insert id="deleteStuTeamRelation" parameterType="java.util.Map"><!-- 全限定的类名 -->
+        DELETE FROM stu_team 
+        <where>
+            <if test="stid != null"> AND stid = #{stid} </if>
+            <if test="stuid != null"> AND stuid = #{stuid} </if>
+            <if test="teamid != null"> AND teamid = #{teamid} </if>
+            <if test="stid == null and stuid == null and teamid == null"> AND stid = 'xxx' </if>
+        </where>
+    </insert>
+    
+   <!-- 修改团队成员关系 -->
+   <update id="updateStuTeamRelation" parameterType="java.util.Map">
+        UPDATE stu_team
+        <set>
+            <if test="stuid != null"> stuid = #{stuid}, </if>
+            <if test="sturole != null"> sturole = #{sturole}, </if>
+        </set> 
+        WHERE teamid = #{teamid} AND stuid = #{oldstuid}
+   </update>
+   
+   <!-- 修改团队成员关系中的学生学号 -->
+   <update id="updateStuTeamRelationInStuid" parameterType="java.util.Map">
+         UPDATE stu_team SET stuid = #{arg0} WHERE stuid = #{arg1};
+   </update>
+  
+
+   <!-- 查询团队成员关系 -->
+    <resultMap id="stuTeamRelationMap" type="cn.edu.tyust.scms.model.StuTeamRelation">
+        <result property="stid" column="stid"/>
+        <result property="stuid" column="stuid"/>
+        <result property="teamid" column="teamid"/>
+        <result property="sturole" column="sturole"/>
+    </resultMap>
+    <select id="selectStuTeamRelation" parameterType="java.util.Map" resultMap="stuTeamRelationMap">
+        SELECT * FROM stu_team
+        <where>
+            <if test="stid != null"> AND stid = #{stid} </if>
+            <if test="stuid != null"> AND stuid = #{stuid} </if>
+            <if test="teamid != null"> AND teamid = #{teamid} </if>
+            <if test="sturole != null"> AND sturole = #{sturole} </if>
+        </where> 
+    </select>
+
+</mapper>

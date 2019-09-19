@@ -1,0 +1,8 @@
+cn.edu.tyust.scms.dao
+cn.edu.tyust.scms.filter
+cn.edu.tyust.scms.mapper
+cn.edu.tyust.scms.model
+cn.edu.tyust.scms.service
+cn.edu.tyust.scms.servlet
+cn.edu.tyust.scms.test
+cn.edu.tyust.scms.util

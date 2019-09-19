@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<base href="../../" />
+		<meta charset="utf-8">
+		<title>用户基本资料</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/public.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/user/displayuser.js"></script>
+		<style>
+			.custom_input_width {
+				width: 500px;
+			}
+			
+			.custom_textarea_width {
+				width: 600px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layuimini-container">
+			<div class="layuimini-main">
+
+				<fieldset class="layui-elem-field layui-field-title">
+					<legend>基本资料</legend>
+				</fieldset>
+
+				<form class="layui-form" action="" lay-filter="example">
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>用户名：</label>
+						<div class="layui-input-block custom_input_width">
+							<input type="text" name="username" id="username" autocomplete="off" placeholder="请输入用户名" class="layui-input" readonly="readonly">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>真实姓名：</label>
+						<div class="layui-input-block custom_input_width">
+							<input type="text" name="realname" id="realname"  autocomplete="off" placeholder="请输入赛事名称" class="layui-input" readonly="readonly">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label"><span class="custom-font-color-red">*&nbsp;</span>身份：</label>
+						<div class="layui-input-block">
+							<input type="radio" name="role" value="普通用户" title="普通用户" autocomplete="off">
+							<input type="radio" name="role" value="管理员" title="管理员" autocomplete="off" checked="checked">
+						</div>
+					</div>
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">备注：</label>
+						<div class="layui-input-block custom_textarea_width">
+							<textarea name="remark" id="remark" autocomplete="off" class="layui-textarea"></textarea>
+						</div>
+					</div>
+
+				</form>
+				<ins class="adsbygoogle" style="display:inline-block;width:970px;height:10px"></ins>
+			</div>
+		</div>
+	</body>
+
+</html>

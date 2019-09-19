@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tyust.scms.mapper.MajorMapper"> 
+    
+    <!-- 自定义resultMap --> 
+    <resultMap id="majorMap" type="cn.edu.tyust.scms.model.Major">
+        <result property="majorid" column="majorid" />
+        <result property="deptid" column="deptid" />
+        <result property="majorname" column="majorname" />
+        <result property="majorremark" column="majorremark" />
+    </resultMap>
+    
+    <!-- 多条件查询院系 -->
+    <select id="selectMajors" parameterType="java.util.Map" resultMap="majorMap">
+        SELECT * FROM major 
+        <where>
+            <if test="deptid != null">AND deptid LIKE CONCAT(CONCAT('%',#{deptid}),'%')</if>
+            <if test="majorid != null">AND majorid LIKE CONCAT(CONCAT('%',#{majorid}),'%')</if>
+            <if test="majorname != null">AND majornameLIKE CONCAT(CONCAT('%',#{majorname}),'%')</if>
+        </where>
+    </select>
+     
+</mapper>
