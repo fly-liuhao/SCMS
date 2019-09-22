@@ -3,6 +3,7 @@ package cn.edu.tyust.scms.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -37,7 +39,8 @@ public class FindUserServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@SuppressWarnings("null")
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
@@ -59,6 +62,22 @@ public class FindUserServlet extends HttpServlet {
         }
         
         List<User> userList = userService.selectUsers(map);
+        
+        // 查找用户是除去作者以及（防止外人对系统造成修改）
+        HttpSession session = request.getSession();
+        User loginUser = (User)session.getAttribute("user");
+        if(loginUser != null && !loginUser.getRealname().equals("刘浩")) {
+            Iterator<User> iterator = userList.iterator();
+            while(iterator.hasNext()) {
+                if(iterator.next().getRealname().equals("刘浩")) {
+                    iterator.remove();
+                    break;
+                }
+            }
+        }
+        
+        
+        
         JSONObject obj = new JSONObject();
         obj.put("code", 0);
         obj.put("msg", "");

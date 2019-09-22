@@ -1,3 +1,8 @@
+// 保证登陆页面始终再最外一层
+if (window != top) {
+	top.location.href = location.href; 
+}
+
 var slideVerify;
 layui.use(['form'], function() {
 	var form = layui.form,
@@ -23,7 +28,7 @@ layui.use(['form'], function() {
 		},
 	});
 	$(document).ready(function() {
-		console.log("在这里准备数据");
+		console.log("在这里准备数据");		
 		// 写上密码
         console.log($('#username').val());
         console.log($('#userpwd').val());

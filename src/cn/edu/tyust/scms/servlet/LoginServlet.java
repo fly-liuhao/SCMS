@@ -113,7 +113,7 @@ public class LoginServlet extends HttpServlet {
 
                 if (user != null) {
                     HttpSession session = request.getSession();// 获取Sesson
-                    session.setMaxInactiveInterval(60*30);// 设置session有效时间为30分钟
+                    session.setMaxInactiveInterval(60 * 30);// 设置session有效时间为30分钟
                     session.setAttribute("user", user);
                 }
                 // 记录登陆日志

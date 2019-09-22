@@ -57,7 +57,9 @@ public class AccessPermissionFilter implements Filter {
         User user = (User)session.getAttribute("user");
         System.out.println(user);
         if(user == null) {
+            System.out.println("准备跳转页面....");
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() +  "/login.html");
+            System.out.println("页面跳转完成....");
         }else if(user.getStatus().equals("0")){
             session.setAttribute("user", null);
             session.removeAttribute("user");

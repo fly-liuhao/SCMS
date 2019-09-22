@@ -1,17 +1,17 @@
 /*
  Navicat MySQL Data Transfer
 
- Source Server         : fly
+ Source Server         : 服务器MySQL
  Source Server Type    : MySQL
- Source Server Version : 80013
- Source Host           : localhost:3306
+ Source Server Version : 80017
+ Source Host           : 101.200.47.217:3306
  Source Schema         : scms
 
  Target Server Type    : MySQL
- Target Server Version : 80013
+ Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 17/09/2019 18:54:10
+ Date: 22/09/2019 11:51:09
 */
 
 SET NAMES utf8mb4;
@@ -36,7 +36,7 @@ CREATE TABLE `classes`  (
 -- Records of classes
 -- ----------------------------
 INSERT INTO `classes` VALUES ('1520521', '52', '15数媒一班', '2015', '男女比例还算正常的一个班');
-INSERT INTO `classes` VALUES ('1520522', '52', '15数媒二班', '2015', '这个班的都是学霸，特别爱学习');
+INSERT INTO `classes` VALUES ('1520522', '52', '15数媒二班', '2015', '<p align=\"left\">这个班的都是学霸，特别爱学习</p>');
 INSERT INTO `classes` VALUES ('1520531', '53', '15物工一班', '2015', '积极向上，热爱学习');
 INSERT INTO `classes` VALUES ('1520532', '53', '15物工二班', '2015', '<p>积极向上，热爱学习</p>');
 INSERT INTO `classes` VALUES ('1520541', '54', '15计科一班', '2015', '都是学霸~');
@@ -99,7 +99,7 @@ CREATE TABLE `competition`  (
   `competitiontype` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '赛事类型',
   `competitiondescribe` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '赛事说明',
   PRIMARY KEY (`competitionid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '赛事实体' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '赛事实体' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of competition
@@ -154,7 +154,7 @@ CREATE TABLE `loginlog`  (
   `loginbrowser` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '浏览器',
   `loginremark` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '登陆备注',
   PRIMARY KEY (`logid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 103 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '登陆日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 245 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '登陆日志' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of loginlog
@@ -228,7 +228,6 @@ INSERT INTO `loginlog` VALUES (71, 23, '2019-09-15 17:32:32', '山西省太原�
 INSERT INTO `loginlog` VALUES (72, 23, '2019-09-16 10:23:20', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
 INSERT INTO `loginlog` VALUES (73, 23, '2019-09-16 10:23:20', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
 INSERT INTO `loginlog` VALUES (74, 23, '2019-09-16 10:27:30', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
-INSERT INTO `loginlog` VALUES (75, 24, '2019-09-16 10:31:16', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
 INSERT INTO `loginlog` VALUES (76, 24, '2019-09-16 10:33:14', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
 INSERT INTO `loginlog` VALUES (77, 24, '2019-09-16 10:33:45', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
 INSERT INTO `loginlog` VALUES (78, 24, '2019-09-16 10:37:46', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
@@ -290,6 +289,115 @@ INSERT INTO `loginlog` VALUES (133, 24, '2019-09-17 18:17:33', '山西省太原�
 INSERT INTO `loginlog` VALUES (134, 24, '2019-09-17 18:41:24', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
 INSERT INTO `loginlog` VALUES (135, 24, '2019-09-17 18:42:09', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
 INSERT INTO `loginlog` VALUES (136, 24, '2019-09-17 18:50:55', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (137, 24, '2019-09-17 18:58:08', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (138, 24, '2019-09-17 19:02:15', '山西省', '1.68.96.88', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (139, 24, '2019-09-17 19:02:54', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (140, 24, '2019-09-17 19:10:38', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (141, 24, '2019-09-17 21:43:34', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (142, 24, '2019-09-17 21:51:13', '山西省', '1.68.96.88', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (143, 24, '2019-09-17 21:54:25', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (144, 24, '2019-09-17 21:57:59', '上海市闵行区', '58.38.90.217', 'Android 7.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (145, 24, '2019-09-17 22:00:18', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (146, 24, '2019-09-17 23:24:03', '山西省太原市', '61.134.196.73', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (147, 24, '2019-09-17 23:46:35', '山西省晋城市', '218.26.55.228', 'Android 8.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (148, 24, '2019-09-17 23:46:48', '山西省晋城市', '218.26.54.246', 'Android 8.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (149, 24, '2019-09-18 08:47:01', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (150, 24, '2019-09-18 08:48:13', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (151, 24, '2019-09-18 09:03:27', '山西省', '1.68.122.42', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (152, 24, '2019-09-18 09:17:03', '山西省', '1.68.122.42', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (153, 24, '2019-09-18 10:09:53', '山西省', '1.68.122.42', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (154, 24, '2019-09-18 10:37:39', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (155, 24, '2019-09-18 15:42:45', '山西省', '1.68.119.56', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (156, 24, '2019-09-18 17:11:40', '山西省', '223.11.54.186', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (157, 24, '2019-09-18 17:32:59', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (158, 24, '2019-09-18 17:33:53', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (159, 24, '2019-09-18 20:18:36', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (160, 24, '2019-09-18 21:41:51', '山西省', '223.11.167.58', 'Windows 10', 'Microsoft Edge', NULL);
+INSERT INTO `loginlog` VALUES (162, 24, '2019-09-19 09:57:16', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (163, 24, '2019-09-19 10:39:01', '山西省太原市', '59.49.30.24', 'Android 8.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (164, 24, '2019-09-19 10:39:15', '山西省太原市', '59.49.30.24', 'Android 8.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (165, 24, '2019-09-19 10:39:31', '山西省太原市', '59.49.30.24', 'Android 8.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (166, 24, '2019-09-19 10:40:03', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (167, 24, '2019-09-19 10:42:27', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (168, 24, '2019-09-19 11:17:17', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (169, 24, '2019-09-19 11:18:29', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (170, 24, '2019-09-19 12:13:31', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (171, 24, '2019-09-19 12:42:15', '山西省', '223.11.50.4', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (172, 24, '2019-09-19 12:44:23', 'CHINA', '117.136.90.40', 'iOS 11 (iPhone)', 'Apple WebKit', NULL);
+INSERT INTO `loginlog` VALUES (173, 24, '2019-09-19 12:46:07', '山西省', '1.68.19.237', 'Android 8.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (174, 24, '2019-09-19 12:56:14', '山西省', '223.11.163.180', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (175, 24, '2019-09-19 13:00:10', '山西省', '223.11.50.4', 'Windows 10', 'Chrome 58', NULL);
+INSERT INTO `loginlog` VALUES (176, 24, '2019-09-19 13:08:25', '山西省晋城市', '218.26.55.90', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (177, 24, '2019-09-19 13:52:43', '陕西省', '171.117.130.208', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (178, 24, '2019-09-19 14:06:24', '山西省', '1.68.14.8', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (179, 24, '2019-09-19 14:32:31', '山西省晋城市', '218.26.54.48', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (180, 24, '2019-09-19 15:18:14', '山西省', '1.68.98.152', 'Android 7.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (181, 24, '2019-09-19 18:34:06', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (182, 24, '2019-09-19 18:55:26', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (183, 24, '2019-09-19 19:08:22', '山西省太原市', '59.49.30.24', 'Windows 10', 'Internet Explorer 11', NULL);
+INSERT INTO `loginlog` VALUES (184, 23, '2019-09-19 19:17:37', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (185, 24, '2019-09-19 19:19:30', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (186, 24, '2019-09-19 19:25:46', '山西省太原市', '59.49.30.24', 'Windows 7', 'Internet Explorer 11', NULL);
+INSERT INTO `loginlog` VALUES (187, 24, '2019-09-19 19:26:50', '山西省太原市', '59.49.30.24', 'Windows 10', 'Internet Explorer 11', NULL);
+INSERT INTO `loginlog` VALUES (189, 23, '2019-09-19 19:48:09', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (190, 23, '2019-09-19 19:48:43', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (191, 26, '2019-09-19 19:50:01', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (192, 24, '2019-09-19 19:54:52', '山西省太原市', '59.49.30.24', 'Windows 10', 'Internet Explorer 11', NULL);
+INSERT INTO `loginlog` VALUES (193, 24, '2019-09-19 20:03:34', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (194, 24, '2019-09-19 20:04:27', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (195, 24, '2019-09-19 20:05:25', '山西省太原市', '59.49.30.24', 'Windows 10', 'Microsoft Edge', NULL);
+INSERT INTO `loginlog` VALUES (196, 24, '2019-09-19 20:08:04', '山西省太原市', '59.49.30.24', 'Windows 10', 'Internet Explorer 11', NULL);
+INSERT INTO `loginlog` VALUES (197, 26, '2019-09-19 20:08:29', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (198, 24, '2019-09-19 20:08:40', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (199, 24, '2019-09-19 21:12:54', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (200, 24, '2019-09-19 21:30:18', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (201, 24, '2019-09-19 21:36:05', '山西省', '1.68.16.137', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (202, 24, '2019-09-19 21:36:06', '山西省晋城市', '218.26.55.97', 'Android 8.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (203, 24, '2019-09-19 21:36:08', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (204, 24, '2019-09-19 21:36:09', '山西省晋城市', '218.26.55.79', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (205, 24, '2019-09-19 21:36:15', '山西省太原市', '59.49.30.24', 'Windows 10', 'Internet Explorer 11', NULL);
+INSERT INTO `loginlog` VALUES (206, 24, '2019-09-19 21:36:21', '山西省太原市', '59.49.30.24', 'Android Mobile', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (207, 24, '2019-09-19 21:36:23', '山西省太原市', '59.49.30.24', 'Windows 10', 'Internet Explorer 11', NULL);
+INSERT INTO `loginlog` VALUES (208, 24, '2019-09-19 21:38:25', '山西省', '223.11.160.140', 'Android 8.x', 'Chrome Mobile', NULL);
+INSERT INTO `loginlog` VALUES (209, 24, '2019-09-19 22:45:28', '山西省', '223.11.54.105', 'Windows 10', 'Internet Explorer 11', NULL);
+INSERT INTO `loginlog` VALUES (210, 24, '2019-09-20 08:04:53', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (211, 24, '2019-09-20 08:24:57', '山西省太原市', '183.185.89.152', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (212, 24, '2019-09-20 10:25:09', '山西省太原市', '183.185.89.152', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (213, 24, '2019-09-20 16:46:22', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (214, 24, '2019-09-20 17:40:32', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (215, 24, '2019-09-20 17:48:13', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (216, 26, '2019-09-20 17:48:37', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (217, 24, '2019-09-20 17:50:10', '山西省太原市', '59.49.30.24', 'Windows 10', 'Opera', NULL);
+INSERT INTO `loginlog` VALUES (218, 26, '2019-09-20 17:51:40', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (219, 24, '2019-09-20 17:52:31', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (220, 26, '2019-09-20 17:52:41', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (221, 26, '2019-09-20 17:53:11', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (222, 26, '2019-09-20 17:53:24', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (223, 24, '2019-09-20 17:53:40', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (224, 26, '2019-09-20 17:53:52', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (225, 26, '2019-09-20 17:54:15', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (226, 26, '2019-09-20 17:55:05', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (227, 24, '2019-09-20 17:55:21', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (228, 26, '2019-09-20 17:55:32', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (229, 24, '2019-09-20 22:23:42', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (230, 26, '2019-09-20 22:23:56', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (231, 26, '2019-09-20 22:24:06', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (232, 24, '2019-09-20 22:24:23', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (233, 24, '2019-09-20 22:24:53', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (234, 24, '2019-09-20 22:25:05', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (235, 24, '2019-09-20 22:25:17', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (236, 26, '2019-09-20 22:25:56', '山西省太原市', '59.49.30.24', 'Windows 10', 'Firefox', NULL);
+INSERT INTO `loginlog` VALUES (237, 24, '2019-09-21 09:51:20', '山西省', '1.68.20.251', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (238, 24, '2019-09-21 14:56:44', 'CHINA', '117.136.90.46', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (239, 24, '2019-09-21 15:18:36', 'CHINA', '117.136.90.46', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (240, 24, '2019-09-21 16:03:45', '山西省晋城市', '218.26.55.83', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (241, 26, '2019-09-22 08:55:40', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (242, 27, '2019-09-22 08:55:53', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (243, 23, '2019-09-22 08:56:09', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (244, 27, '2019-09-22 08:56:36', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (245, 23, '2019-09-22 08:58:56', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (246, 24, '2019-09-22 09:53:36', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
+INSERT INTO `loginlog` VALUES (247, 24, '2019-09-22 10:49:08', '山西省太原市', '59.49.30.24', 'Windows 10', 'Chrome', NULL);
 
 -- ----------------------------
 -- Table structure for major
@@ -328,7 +436,7 @@ CREATE TABLE `stu_team`  (
   `teamid` int(11) NOT NULL COMMENT '小组编号',
   `sturole` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`stid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 160 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '学生_小组关系' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 179 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '学生_小组关系' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of stu_team
@@ -479,13 +587,13 @@ CREATE TABLE `team`  (
   `registdate` datetime(0) NOT NULL COMMENT '录入时间',
   `award` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '获奖情况',
   PRIMARY KEY (`teamid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '参赛小组实体' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '参赛小组实体' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of team
 -- ----------------------------
-INSERT INTO `team` VALUES (20, 5, 'ACM一组', 'Blue Dream', '刘浩', '刘忠晔，宋志祥', '刘浩', '2019-09-15 12:31:20', '三等奖');
-INSERT INTO `team` VALUES (21, 1, '软件杯一组', 'Move Code', '任云康', '张立凡', '刘浩', '2019-09-15 12:34:22', '未获奖');
+INSERT INTO `team` VALUES (20, 5, 'ACM一组', 'Blue Dream', '刘浩', '刘忠晔，宋志祥', '刘浩', '2019-09-15 12:31:20', '优秀奖');
+INSERT INTO `team` VALUES (21, 1, '软件杯一组', 'Move Code', '任云康', '张立凡', '刘浩', '2019-09-15 12:34:22', '特等奖');
 INSERT INTO `team` VALUES (22, 4, 'PAT一组', 'Aster', '刘浩', '张升', '刘浩', '2019-09-15 12:39:12', '特等奖');
 INSERT INTO `team` VALUES (23, 3, '互联网+一组', 'Hello World', '李沛橦', '张麟华', '刘浩', '2019-09-15 12:44:54', '优秀奖');
 INSERT INTO `team` VALUES (24, 3, '互联网+二组', 'Hello World', '赵婉婷', '秦晓辉', '刘浩', '2019-09-15 13:03:17', '待定');
@@ -516,15 +624,15 @@ CREATE TABLE `user`  (
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `userremark` varchar(5000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '用户备注',
   PRIMARY KEY (`userid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '用户实体' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '用户实体' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (13, '普通用户', 'xiaocao', 'e10adc3949ba59abbe56e057f20f883e', '小草', '1', '<p>除了美貌与才华一无是处的鹿小草！</p><p>鼓掌<img src=\"http://localhost:8080/SCMS/lib/layui-v2.5.4/images/face/39.gif\" alt=\"[鼓掌]\"></p>');
-INSERT INTO `user` VALUES (18, '普通用户', 'xiuxiu', 'c7ccf5a32f67e8bffbca73110799d042', '咻咻', '1', '咻咻<img src=\"http://localhost:8080/SCMS/lib/layui-v2.5.4/images/face/16.gif\" alt=\"[太开心]\">');
-INSERT INTO `user` VALUES (23, '管理员', 'liuhao', 'e10adc3949ba59abbe56e057f20f883e', '刘浩', '1', '作者本人呐，超级管理员<img src=\"http://localhost:8080/SCMS/lib/layui-v2.5.4/images/face/13.gif\" alt=\"[偷笑]\"><br>');
-INSERT INTO `user` VALUES (24, '管理员', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '测试用户', '1', '该用户为测试用户~<br>');
+INSERT INTO `user` VALUES (23, '管理员', 'liuhao', 'f927c8e05b5a813908d42f26555e6a75', '刘浩', '1', '作者本人呐，超级管理员<img src=\"http://101.200.47.217:8080/SCMS/lib/layui-v2.5.4/images/face/13.gif\" alt=\"[偷笑]\"><br>');
+INSERT INTO `user` VALUES (24, '管理员', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '测试用户', '1', '<p>[用户名：super，密码：123456]（测试用户）</p>');
+INSERT INTO `user` VALUES (26, '普通用户', 'user', 'e10adc3949ba59abbe56e057f20f883e', '普通用户', '1', '[用户名：user，密码：123456]（普通用户）');
+INSERT INTO `user` VALUES (27, '管理员', 'super', 'e10adc3949ba59abbe56e057f20f883e', '管理员', '1', '<p>[用户名：super，密码：123456]（管理员）</p>');
 
 -- ----------------------------
 -- View structure for scms_classinfo
@@ -562,10 +670,10 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `scms_studentinfo` AS sel
 DROP VIEW IF EXISTS `scms_team_info`;
 CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `scms_team_info` AS select `team`.`teamid` AS `teamid`,`team`.`teamgroup` AS `teamgroup`,`team`.`teamname` AS `teamname`,`team`.`leader` AS `leader`,`team`.`adviser` AS `adviser`,`team`.`registusername` AS `registusername`,`team`.`registdate` AS `registdate`,`team`.`award` AS `award`,`competition`.`competitionname` AS `competitionname` from (`team` join `competition`) where (`team`.`competitionid` = `competition`.`competitionid`);
 
-SET FOREIGN_KEY_CHECKS = 1;
-
 -- ----------------------------
 -- View structure for scms_competition_by_stuid
 -- ----------------------------
 DROP VIEW IF EXISTS `scms_competition_by_stuid`;
 CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `scms_competition_by_stuid` AS select `scms_stu_competition`.`stuid` AS `stuid`,`scms_stu_competition`.`competitionid` AS `competitionid`,`scms_stu_competition`.`sturole` AS `sturole`,`competition`.`competitionname` AS `competitionname`,`competition`.`competitiondate` AS `competitiondate`,`competition`.`competitionlevel` AS `competitionlevel`,`competition`.`competitiontype` AS `competitiontype`,`competition`.`competitiondescribe` AS `competitiondescribe` from (`scms_stu_competition` join `competition`) where (`scms_stu_competition`.`competitionid` = `competition`.`competitionid`);
+
+SET FOREIGN_KEY_CHECKS = 1;

@@ -14,6 +14,7 @@ layui.define(["element", "jquery"], function(exports) {
 	    // 填写系统右上角用户名，并确定是否为管理员
 		$.ajax({
 			type : "post",
+			async: false,
 			url : "GetUserRealnameServlet",
 			data : {'ram' : Math.random()},
 			dataType : "json",//预期服务器返回的数据类型

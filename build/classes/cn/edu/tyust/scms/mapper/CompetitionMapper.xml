@@ -39,7 +39,8 @@
     <select id="selectCompetitions" parameterType="java.util.Map" resultMap="competMap">
         SELECT competitionid, competitionname, DATE_FORMAT(competitiondate, '%Y-%m') AS competitiondate, competitionlevel, competitiontype, competitiondescribe FROM competition 
         <where>
-            <if test="1 == 1">AND competitionid != '0'</if>
+            <!-- <if test="1 == 1">AND competitionid != '0'</if> -->
+            <if test="1 == 1">AND competitionname != '重要数据'</if>
             <if test="competitionid != null">AND competitionid = #{competitionid}</if>
             <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
             <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
@@ -53,7 +54,8 @@
     <select id="selectCompetitions2" parameterType="java.util.Map" resultMap="competMap">
         SELECT competitionid, competitionname, DATE_FORMAT(competitiondate, '%Y-%m') AS competitiondate, competitionlevel, competitiontype, competitiondescribe FROM competition 
         <where>
-            <if test="1 == 1">AND competitionid != '0'</if>
+            <!-- <if test="1 == 1">AND competitionid != '0'</if> -->
+            <if test="1 == 1">AND competitionname != '重要数据'</if>
             <if test="competitionid != null">AND competitionid = #{competitionid}</if>
             <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
             <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
@@ -67,7 +69,8 @@
     <select id="getCompetitionNumber" parameterType="java.util.Map" resultType="Integer">
         SELECT COUNT(*) AS recordnumber FROM competition 
         <where>
-            <if test="1 == 1">AND competitionid != '0'</if>
+            <!-- <if test="1 == 1">AND competitionid != '0'</if> -->
+            <if test="1 == 1">AND competitionname != '重要数据'</if>
             <if test="competitionid != null">AND competitionid = #{competitionid}</if>
             <if test="competitionname != null">AND competitionname LIKE CONCAT(CONCAT('%',#{competitionname}),'%')</if>
             <if test="startdate != null">AND competitiondate &gt;= STR_TO_DATE(#{startdate},'%Y-%m')</if>
